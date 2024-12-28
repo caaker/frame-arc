@@ -1,4 +1,4 @@
-// Functions here can run in both the browser and the server
+ // Functions here can run both on the server and on the client - considered universal or isomorphic
 
 const gen = {};
 
@@ -13,13 +13,9 @@ gen.inStrictMode = function() {
   return (() => this === undefined)();
 };
 
-// Exporting for Node.js and ES modules
+// CommonJS syntax for Node.js < 14 and // ES module syntax for Node.js >= 14
 if (typeof module !== 'undefined' && module.exports) {
-
-  // CommonJS syntax for Node.js < 14
   module.exports = gen;
 } else {
-
-   // ES module syntax for Node.js >= 14
   export default gen;
 }
