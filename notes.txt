@@ -1,0 +1,5 @@
+# install jest
+npm install --save-dev jest
+
+# run using
+npm test

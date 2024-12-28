@@ -1,0 +1,16 @@
+{
+  "name": "frame-arc",
+  "version": "1.0.2",
+  "description": "",
+  "main": "arc-all.js",
+  "browser": "arc-browser.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "*"
+  }
+}
+
