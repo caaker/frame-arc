@@ -3,7 +3,6 @@
   "version": "1.1.0",
   "description": "",
   "main": "arc-all.js",
-  "browser": "arc-browser.js",
   "scripts": {
     "test": "jest"
   },
