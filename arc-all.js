@@ -191,8 +191,12 @@ gen.copyToClipboard = async function(text_to_copy) {
 // Export all code
 
 // CommonJS syntax for Node.js < 14 and // ES module syntax for Node.js >= 14
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = gen;
-} else {
-  export default gen;
-}
+// note you can not put export default gen in a conditional block currently.
+
+module.exports = gen;
+
+// if (typeof module !== 'undefined' && module.exports) {
+//   module.exports = gen;
+// } else {
+//   export default gen;
+// }
