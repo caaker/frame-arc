@@ -1,19 +1,13 @@
 const gen = {};
 
-
 /****************************************************************************************************/
 // Functions here can run both on the server and on the client - considered universal or isomorphic
-
 
 gen.makeAnchorHash = function(text) {
   let hash = encodeURIComponent(text);
   hash = hash.replace(/%[0-9A-F]{2}/g, '_');
   hash = hash.replace(/_{2,10}/g, '_');
   return hash;
-};
-
-gen.makeAnchorHashLink = function(text) {
-  return window.location.origin + '#' + gen.makeAnchorHash(text);
 };
 
 gen.inStrictMode = function() {
