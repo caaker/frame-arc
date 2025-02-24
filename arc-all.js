@@ -161,6 +161,10 @@ gen.URL = class URL {
 /****************************************************************************************************/
 // Code here requires access to the browser 
 
+// requires window
+gen.makeAnchorHashLink = function(text) {
+  return window.location.origin + '#' + gen.makeAnchorHash(text);
+};
 
 // requires window
 gen.scrollToHash = function(delay = 0, offset = 0) {
