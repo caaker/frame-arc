@@ -16,7 +16,6 @@ gen.inStrictMode = function() {
   return (() => this === undefined)();
 };
 
-
 gen.URL = class URL {
 
   constructor(url) {
