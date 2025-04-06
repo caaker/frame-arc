@@ -19,22 +19,19 @@ gen.URL = class URL {
   constructor(url) {
     this.url = url;
     this.arr = [];
-    this.parse(url);
+    this.make(url);
   }
 
-  // an actual non-empty string
+  // check that url exists, is a string, and is not empty
   isString() {
-    return (this.url && (typeof this.url === 'string') && this.url !== '') ? true : false;
+    return ((this.url) && (typeof this.url === 'string') && (this.url !== '')) ? true : false;
   }
 
-  parse(url) {
-    this.url = url;
-
-    // nice string check
+  make(url) {
     if (this.isString()) {
       try {
         
-        // analyze the string
+        // analyze the regular expression string
         this.execute();
 
         // make it readable by creating an object
@@ -55,7 +52,7 @@ gen.URL = class URL {
 
   }
 
-  // from Crockford book but broken into parts for readability
+  // from Crockford book but refactored into parts for readability
   execute() {
 
     // start
@@ -95,7 +92,7 @@ gen.URL = class URL {
     this.arr = regexp.exec(this.url);
   }
 
-  // make this beautiful object from the regex array - 6 points
+  // below we have the 6 components of a url
   makeObject() {
     if(this.arr) {
       this.protocol = this.arr[1];
@@ -111,10 +108,11 @@ gen.URL = class URL {
     }
   }
 
-  // take this beautiful object and validate via simple domain check
+  // add properties to the url and validate
+  // to validate we need something of the form x.y
   addValidatedProps() {
     let res = this.domain.split('.');
-    if(res.length > 1 && res[res.length - 2] !== '') {
+    if (res.length > 1 && res[res.length - 1] !== '' && res[res.length - 2] !== '') {
       this.tld = res[res.length - 1];
       this.name = res[res.length - 2];
       this.valid = true;
@@ -127,7 +125,7 @@ gen.URL = class URL {
 
   // if a www escaped in, remove it
   removeWWW() {
-    const four = this.name.slice(0, 4);
+    const four = this?.name?.slice(0, 4);
     if(four === 'www.') {
       this.name = this.name.slice(4);
       this.domain = this.domain.slice(4);
@@ -191,13 +189,5 @@ gen.copyToClipboard = async function(text_to_copy) {
 /****************************************************************************************************/
 // Export all code
 
-// CommonJS syntax for Node.js < 14 and // ES module syntax for Node.js >= 14
-// note you can not put export default gen in a conditional block currently.
-
-module.exports = gen;
-
-// if (typeof module !== 'undefined' && module.exports) {
-//   module.exports = gen;
-// } else {
-//   export default gen;
-// }
+// module.exports = gen;
+export default gen;

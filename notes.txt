@@ -1,0 +1,8 @@
+PUBLISH PROTOCOL
+
+npm login
+npm version patch
+gdeploy
+npm publish
+
+
